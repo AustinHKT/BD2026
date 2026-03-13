@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Bangkok Hospital Phuket — Clinical Units</title>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800;900&family=Sarabun:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red:#C8102E;--red-dark:#9B0D22;
+  --blue:#003087;--blue-mid:#1A4A9B;--blue-light:#2B5FBB;--blue-soft:#EEF3FB;
+  --gray:#64748b;--gray-light:#F1F5F9;--white:#fff;
+  --shadow-sm:0 2px 10px rgba(0,48,135,.08);
+  --shadow-md:0 8px 32px rgba(0,48,135,.14);
+  --shadow-lg:0 16px 48px rgba(0,48,135,.18);
+  --r:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Prompt','Sarabun',sans-serif;background:#EFF3FA;color:var(--blue);min-height:100vh;overflow-x:hidden;}
+
+/* TOPBAR */
+.topbar{background:var(--blue);color:rgba(255,255,255,.7);font-size:.72rem;font-weight:300;display:flex;justify-content:flex-end;gap:28px;padding:6px 40px;}
+.topbar span{display:flex;align-items:center;gap:5px;}
+
+/* HEADER */
+header{background:white;box-shadow:var(--shadow-sm);position:sticky;top:0;z-index:200;}
+.hdr{max-width:1320px;margin:0 auto;padding:0 36px;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.logo{display:flex;align-items:center;gap:12px;cursor:pointer;}
+.logo-txt h1{font-size:1.05rem;font-weight:900;color:var(--blue);letter-spacing:.03em;line-height:1.1;}
+.logo-txt span{font-size:.62rem;font-weight:700;color:var(--gray);letter-spacing:.18em;text-transform:uppercase;}
+.nav{display:flex;gap:4px;}
+.nbtn{background:none;border:none;padding:7px 15px;border-radius:9px;font-family:'Prompt',sans-serif;font-size:.82rem;font-weight:500;color:var(--blue);cursor:pointer;transition:background .2s;}
+.nbtn:hover{background:var(--blue-soft);}
+.nbtn.on{background:var(--blue);color:white;}
+.embtn{background:var(--red);color:white;border:none;padding:9px 20px;border-radius:10px;font-family:'Prompt',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:7px;transition:all .2s;}
+.embtn:hover{background:var(--red-dark);transform:scale(1.03);}
+
+/* HERO */
+.hero{background:linear-gradient(140deg,#001a50 0%,var(--blue) 50%,var(--blue-light) 100%);padding:54px 36px 90px;position:relative;overflow:hidden;}
+.hero-orbs{position:absolute;inset:0;pointer-events:none;}
+.hero-orbs i{position:absolute;border-radius:50%;}
+.hero-orbs i:nth-child(1){width:460px;height:460px;top:-110px;right:-60px;background:rgba(255,255,255,.04);}
+.hero-orbs i:nth-child(2){width:260px;height:260px;bottom:-50px;left:30%;background:rgba(255,255,255,.03);}
+.hero-orbs i:nth-child(3){width:150px;height:150px;top:30px;left:6%;background:rgba(200,16,46,.13);}
+.hero-in{max-width:1320px;margin:0 auto;position:relative;z-index:1;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(200,16,46,.18);border:1px solid rgba(200,16,46,.38);color:#ffb3bf;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:18px;}
+.hero h2{font-size:2.75rem;font-weight:900;color:white;line-height:1.15;margin-bottom:12px;}
+.hero h2 em{font-style:normal;color:#7db8ff;}
+.hero p{font-size:.93rem;font-weight:300;color:rgba(255,255,255,.68);max-width:540px;line-height:1.75;margin-bottom:36px;}
+.kpis{display:flex;gap:38px;flex-wrap:wrap;align-items:center;}
+.kpi .n{font-size:1.95rem;font-weight:900;color:white;line-height:1;}
+.kpi .l{font-size:.67rem;color:rgba(255,255,255,.58);margin-top:4px;letter-spacing:.04em;}
+.kdiv{width:1px;height:36px;background:rgba(255,255,255,.18);}
+
+/* SEARCH */
+.sf{max-width:1320px;margin:-30px auto 0;padding:0 36px;position:relative;z-index:10;}
+.sc{background:white;border-radius:var(--r);box-shadow:var(--shadow-lg);padding:16px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.sc input{flex:1;min-width:180px;border:none;outline:none;font-family:'Prompt',sans-serif;font-size:.9rem;color:var(--blue);background:transparent;}
+.sc input::placeholder{color:#94a3b8;}
+.sdiv{width:1px;height:20px;background:#e2e8f0;flex-shrink:0;}
+.pills{display:flex;gap:7px;flex-wrap:wrap;}
+.pill{padding:5px 14px;border-radius:20px;border:1.5px solid #e2e8f0;background:white;font-family:'Prompt',sans-serif;font-size:.71rem;font-weight:700;color:var(--gray);cursor:pointer;transition:all .2s;white-space:nowrap;}
+.pill:hover,.pill.on{color:white;}
+.pill[data-f="all"].on,.pill[data-f="all"]:hover{background:var(--blue);border-color:var(--blue);}
+.pill[data-f="coe"].on,.pill[data-f="coe"]:hover{background:#0f172a;border-color:#0f172a;}
+.pill[data-f="sbu"].on,.pill[data-f="sbu"]:hover{background:#0369a1;border-color:#0369a1;}
+.pill[data-f="ncd"].on,.pill[data-f="ncd"]:hover{background:#b45309;border-color:#b45309;}
+
+/* MAIN */
+.main{max-width:1320px;margin:0 auto;padding:40px 36px 70px;}
+
+/* CAT LABEL */
+.cat-block{margin-bottom:48px;}
+.cat-lbl{display:inline-flex;align-items:center;gap:9px;padding:6px 18px 6px 12px;border-radius:10px;font-size:.73rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px;}
+.cat-lbl.coe{background:#0f172a;color:#93c5fd;}
+.cat-lbl.sbu{background:#0c4a6e;color:#7dd3fc;}
+.cat-lbl.ncd{background:#451a03;color:#fed7aa;}
+.cat-lbl .d{width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.7;}
+
+/* DEPT GRID */
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:18px;}
+
+/* DEPT CARD */
+.dc{background:white;border-radius:var(--r);padding:26px 22px 20px;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);box-shadow:var(--shadow-sm);border:2px solid transparent;position:relative;overflow:hidden;animation:rise .4s ease both;}
+.dc::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--c,var(--blue));transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.dc:hover{transform:translateY(-7px);box-shadow:var(--shadow-lg);border-color:var(--c,var(--blue));}
+.dc:hover::after{transform:scaleX(1);}
+.dc-icon{width:52px;height:52px;border-radius:13px;background:var(--bg,var(--blue-soft));display:flex;align-items:center;justify-content:center;font-size:1.55rem;margin-bottom:16px;transition:transform .3s;}
+.dc:hover .dc-icon{transform:scale(1.1) rotate(-6deg);}
+.dc-cat{font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--c,var(--blue));opacity:.65;margin-bottom:5px;}
+.dc-name{font-size:.94rem;font-weight:800;color:var(--blue);line-height:1.3;margin-bottom:4px;}
+.dc-eng{font-size:.71rem;font-weight:400;color:var(--gray);line-height:1.4;margin-bottom:13px;}
+.dc-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.dtag{font-size:.58rem;font-weight:700;padding:2px 8px;border-radius:7px;background:var(--bg,#eef2ff);color:var(--c,var(--blue));}
+.dc-arr{position:absolute;bottom:16px;right:16px;color:var(--c,var(--blue));font-size:.78rem;font-weight:700;opacity:0;transform:translateX(-6px);transition:all .2s;}
+.dc:hover .dc-arr{opacity:1;transform:translateX(0);}
+.dc-badge{position:absolute;top:13px;right:13px;background:var(--c,var(--blue));color:white;font-size:.56rem;font-weight:800;padding:2px 9px;border-radius:9px;letter-spacing:.05em;}
+@keyframes rise{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══ DEPT PAGE ══ */
+#dp{display:none;}
+.bc{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--gray);margin-bottom:28px;}
+.bc span{cursor:pointer;transition:color .15s;}
+.bc span:hover{color:var(--blue);}
+.bc .sep{opacity:.35;cursor:default;}
+.bc .cur{color:var(--blue);font-weight:700;cursor:default;}
+
+.dhero{border-radius:22px;padding:38px 44px;margin-bottom:28px;position:relative;overflow:hidden;}
+.dhero-bg{position:absolute;inset:0;z-index:0;}
+.dhero-wm{position:absolute;right:32px;top:50%;transform:translateY(-50%);font-size:9rem;opacity:.1;line-height:1;pointer-events:none;z-index:1;}
+.dhero-in{position:relative;z-index:2;display:flex;align-items:center;gap:28px;}
+.dhero-ico{width:76px;height:76px;background:rgba(255,255,255,.18);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:2.3rem;flex-shrink:0;backdrop-filter:blur(6px);}
+.dhero-txt .ctag{display:inline-block;font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 12px;border-radius:9px;background:rgba(255,255,255,.17);color:rgba(255,255,255,.83);margin-bottom:9px;}
+.dhero-txt h2{font-size:1.8rem;font-weight:900;color:white;margin-bottom:6px;}
+.dhero-txt p{font-size:.86rem;font-weight:300;color:rgba(255,255,255,.76);max-width:540px;line-height:1.7;}
+.dmeta{margin-top:13px;display:flex;gap:22px;flex-wrap:wrap;}
+.dmi{display:flex;align-items:center;gap:6px;font-size:.74rem;color:rgba(255,255,255,.72);}
+
+/* info */
+.ig{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:26px;}
+.ic{background:white;border-radius:var(--r);padding:22px;box-shadow:var(--shadow-sm);}
+.ic h3{font-size:.72rem;font-weight:700;color:var(--gray);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:7px;}
+.il{list-style:none;}
+.il li{padding:7px 0;border-bottom:1px solid #f1f5f9;font-size:.83rem;color:#334155;display:flex;align-items:center;gap:9px;}
+.il li:last-child{border-bottom:none;}
+.il li::before{content:'▸';color:var(--dc,var(--blue));font-size:.63rem;flex-shrink:0;}
+.st{width:100%;border-collapse:collapse;font-size:.8rem;}
+.st th{background:#f8fafc;padding:8px 13px;text-align:left;font-size:.68rem;font-weight:700;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;}
+.st td{padding:9px 13px;border-bottom:1px solid #f1f5f9;}
+.st tr:last-child td{border-bottom:none;}
+.tb{background:var(--dc,var(--blue));color:white;font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:7px;display:inline-block;}
+.ab{width:100%;background:var(--red);color:white;border:none;padding:13px;border-radius:11px;font-family:'Prompt',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;transition:all .2s;}
+.ab:hover{filter:brightness(1.1);transform:scale(1.02);}
+
+/* doctors */
+.dg{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;}
+.docc{background:white;border-radius:13px;padding:17px 19px;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:13px;cursor:pointer;transition:all .2s;border:2px solid transparent;}
+.docc:hover{border-color:var(--dc,var(--blue));transform:translateY(-3px);box-shadow:var(--shadow-md);}
+.dav{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--dc,var(--blue)),var(--blue-light));display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;}
+.dn{font-size:.83rem;font-weight:700;color:var(--blue);margin-bottom:2px;}
+.ds{font-size:.7rem;color:var(--gray);margin-bottom:4px;}
+.av{display:inline-block;font-size:.6rem;font-weight:700;padding:2px 9px;border-radius:7px;}
+.av.on{background:#dcfce7;color:#166534;}
+.av.off{background:#fef3c7;color:#92400e;}
+
+/* SEC HD */
+.shd{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+.stit{font-size:1.12rem;font-weight:800;color:var(--blue);display:flex;align-items:center;gap:9px;}
+.stit::before{content:'';width:4px;height:21px;border-radius:2px;background:var(--red);display:block;}
+
+/* FOOTER */
+footer{background:var(--blue);color:rgba(255,255,255,.62);text-align:center;padding:24px 36px;font-size:.73rem;line-height:1.85;}
+footer strong{color:white;}
+
+/* FLAGSHIP MENU */
+.flagship-hd{margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.flagship-badge{display:inline-flex;align-items:center;gap:7px;background:#0f172a;color:#fde68a;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:10px;}
+.flagship-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:12px;}
+.flagship-card{display:flex;align-items:center;gap:18px;background:white;border-radius:var(--r);padding:22px 24px;text-decoration:none;box-shadow:var(--shadow-sm);border:2px solid transparent;transition:all .25s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden;}
+.flagship-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.flagship-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--blue);}
+.flagship-card:hover::before{transform:scaleX(1);}
+.flagship-icon{width:56px;height:56px;border-radius:14px;background:var(--blue-soft);display:flex;align-items:center;justify-content:center;font-size:1.7rem;flex-shrink:0;transition:transform .3s;}
+.flagship-card:hover .flagship-icon{transform:scale(1.1) rotate(-5deg);}
+.flagship-name{font-size:1rem;font-weight:800;color:var(--blue);margin-bottom:3px;}
+.flagship-sub{font-size:.72rem;color:var(--gray);font-weight:400;}
+.flagship-arr{margin-left:auto;font-size:1.2rem;color:var(--blue);opacity:.4;transition:all .2s;flex-shrink:0;}
+.flagship-card:hover .flagship-arr{opacity:1;transform:translateX(4px);}
+
+/* ══════════════════════════════
+   RESPONSIVE — iPad (≤1024px)
+══════════════════════════════ */
+@media(max-width:1024px){
+  .hero{padding:44px 24px 80px;}
+  .hero h2{font-size:2.2rem;}
+  .sf{padding:0 24px;}
+  .main{padding:32px 24px 60px;}
+  .dgrid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
+  .dhero{padding:30px 28px;}
+  .dhero-txt h2{font-size:1.5rem;}
+  footer{padding:20px 24px;font-size:.7rem;}
+}
+
+/* ══════════════════════════════
+   RESPONSIVE — iPhone (≤640px)
+══════════════════════════════ */
+@media(max-width:640px){
+  /* hero */
+  .hero{padding:32px 18px 72px;}
+  .hero h2{font-size:1.65rem;line-height:1.2;}
+  .hero h2 br{display:none;}
+  .kpis{gap:18px;}
+  .kpi .n{font-size:1.5rem;}
+  .kpi .l{font-size:.62rem;}
+  .kdiv{height:28px;}
+
+  /* search card */
+  .sf{padding:0 16px;margin:-24px auto 0;}
+  .sc{padding:12px 16px;gap:10px;border-radius:14px;}
+  .sc input{font-size:.85rem;min-width:120px;}
+  .sdiv{display:none;}
+  .pills{gap:6px;}
+  .pill{font-size:.68rem;padding:5px 11px;}
+
+  /* main */
+  .main{padding:24px 16px 50px;}
+
+  /* category label */
+  .cat-lbl{font-size:.65rem;padding:5px 12px 5px 10px;}
+  .cat-block{margin-bottom:36px;}
+
+  .flagship-grid{grid-template-columns:1fr;gap:12px;}
+  .flagship-card{padding:16px 18px;}
+  .flagship-icon{width:46px;height:46px;font-size:1.4rem;}
+  .flagship-name{font-size:.9rem;}
+  /* dept grid — 2 cols on phone */
+  .dgrid{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .dc{padding:18px 14px 38px;}
+  .dc-icon{width:42px;height:42px;font-size:1.25rem;margin-bottom:12px;border-radius:11px;}
+  .dc-name{font-size:.82rem;}
+  .dc-eng{font-size:.65rem;margin-bottom:10px;}
+  .dtag{font-size:.55rem;padding:2px 6px;}
+  .dc-arr{font-size:.7rem;bottom:12px;right:12px;}
+  .dc-badge{font-size:.52rem;padding:2px 7px;top:10px;right:10px;}
+
+  /* dept page */
+  .bc{font-size:.74rem;gap:5px;flex-wrap:wrap;}
+  .dhero{border-radius:16px;padding:22px 18px 26px;}
+  .dhero-in{flex-direction:column;align-items:flex-start;gap:16px;}
+  .dhero-ico{width:58px;height:58px;font-size:1.7rem;border-radius:15px;}
+  .dhero-txt h2{font-size:1.15rem;line-height:1.25;}
+  .dhero-txt p{font-size:.82rem;}
+  .dhero-wm{font-size:5rem;right:14px;}
+  .dmeta{gap:12px;margin-top:10px;}
+  .dmi{font-size:.7rem;}
+  .ctag{font-size:.58rem;}
+
+  /* footer */
+  footer{flex-direction:column!important;gap:6px;padding:18px 16px;font-size:.7rem;text-align:center;}
+}
+
+/* ══════════════════════════════
+   Touch: larger tap targets
+══════════════════════════════ */
+@media(hover:none){
+  .dc{-webkit-tap-highlight-color:transparent;}
+  .dc:active{transform:scale(.97);box-shadow:var(--shadow-md);}
+  .dc:hover{transform:none;box-shadow:var(--shadow-sm);}
+  .dc:hover::after{transform:scaleX(0);}
+  .dc:active::after{transform:scaleX(1);}
+  .pill{padding:8px 16px;}
+  .bc span{padding:4px 0;}
+}
+</style>
+</head>
+<body>
+
+
+
+<!-- ═══ DASHBOARD ═══ -->
+<div id="dash">
+  <div class="hero">
+    <div class="hero-orbs"><i></i><i></i><i></i></div>
+    <div class="hero-in">
+      <h2>Phuket Strategic Alignment<br><em>Working Team</em></h2>
+      <div class="kpis">
+        <div class="kpi"><div class="n">5</div><div class="l">Centers of Excellence</div></div>
+        <div class="kdiv"></div>
+        <div class="kpi"><div class="n">4</div><div class="l">Strategic Business Units</div></div>
+        <div class="kdiv"></div>
+        <div class="kpi"><div class="n">2</div><div class="l">NCDs &amp; Elective Programs</div></div>
+        <div class="kdiv"></div>
+        <div class="kpi"><div class="n">24/7</div><div class="l">Emergency Coverage</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sf">
+    <div class="sc">
+      <span style="font-size:1.1rem;opacity:.4;">🔍</span>
+      <input type="text" id="si" placeholder="ค้นหาแผนก หรือบริการที่ต้องการ…" oninput="filterAll()">
+      <div class="sdiv"></div>
+      <div class="pills">
+        <button class="pill on" data-f="all" onclick="setPill(this)">ทั้งหมด</button>
+        <button class="pill" data-f="coe" onclick="setPill(this)">⭐ CoE</button>
+        <button class="pill" data-f="sbu" onclick="setPill(this)">📌 SBU</button>
+        <button class="pill" data-f="ncd" onclick="setPill(this)">🎯 NCDs / Elective</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="cat-block" id="blk-coe">
+      <div class="cat-lbl coe"><span class="d"></span>Centers of Excellence — CoE</div>
+      <div class="dgrid" id="gcoe"></div>
+    </div>
+    <div class="cat-block" id="blk-sbu">
+      <div class="cat-lbl sbu"><span class="d"></span>Strategic Business Units — SBU</div>
+      <div class="dgrid" id="gsbu"></div>
+    </div>
+    <div class="cat-block" id="blk-ncd">
+      <div class="cat-lbl ncd"><span class="d"></span>NCDs Focus &amp; Elective Surgery</div>
+      <div class="dgrid" id="gncd"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DEPT PAGE ═══ -->
+<div id="dp">
+  <div class="main">
+    <div class="bc">
+      <span onclick="showDash()">🏠 Home</span>
+      <span class="sep">›</span>
+      <span class="sep" id="bc-cat">—</span>
+      <span class="sep">›</span>
+      <span class="cur" id="bc-nm">—</span>
+    </div>
+
+    <div class="dhero" id="dhero">
+      <div class="dhero-bg" id="dhbg"></div>
+      <div class="dhero-wm" id="dhwm"></div>
+      <div class="dhero-in">
+        <div class="dhero-ico" id="dhico"></div>
+        <div class="dhero-txt">
+          <span class="ctag" id="dctag"></span>
+          <h2 id="dttl"></h2>
+          <p id="ddsc"></p>
+          <div class="dmeta">
+            <div class="dmi" id="dfl"></div>
+            <div class="dmi" id="dhr"></div>
+            <div class="dmi" id="dtl"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FLAGSHIP MENU — shown only for PPSI -->
+    <div id="flagship-menu" style="display:none;">
+      <div class="flagship-hd">
+        <span class="flagship-badge">⭐ Flagship Programs</span>
+      </div>
+      <div class="flagship-grid">
+        <a href="body_contour_patient_journey.html" class="flagship-card">
+          <div class="flagship-icon">🫁</div>
+          <div class="flagship-info">
+            <div class="flagship-name">Body Contour</div>
+            <div class="flagship-sub">Patient Journey</div>
+          </div>
+          <div class="flagship-arr">→</div>
+        </a>
+        <a href="srs_patient_journey.html" class="flagship-card">
+          <div class="flagship-icon">🌸</div>
+          <div class="flagship-info">
+            <div class="flagship-name">Gender-Affirming Surgery</div>
+            <div class="flagship-sub">Patient Journey</div>
+          </div>
+          <div class="flagship-arr">→</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer style="display:flex;justify-content:space-between;align-items:center;">
+  <span>Developed by <strong>SMBD Department</strong></span>
+  <span><strong>Bangkok Dusit Medical Services (BDMS)</strong></span>
+</footer>
+
+<script>
+const DB = {
+  coe:[
+    {id:'trauma',name:'CoE Trauma',eng:'Trauma & Emergency Surgery Center',icon:'🚑',c:'#C8102E',bg:'#fee2e2',badge:'Level 1',
+     floor:'ชั้น 1 อาคาร A',hours:'24/7 ตลอดเวลา',tel:'ต่อ 100',
+     desc:'ศูนย์รักษาอุบัติเหตุระดับ Level 1 ครบวงจร ทีมศัลยแพทย์อุบัติเหตุและแพทย์เฉพาะทางพร้อมรับทุกสถานการณ์ฉุกเฉินตลอด 24 ชั่วโมง',
+     tags:['Trauma Surgery','Critical Care','Burn Unit'],
+     svc:['Damage Control Surgery','ICU Trauma 16 เตียง','Burn & Wound Center','Spine Trauma Surgery','Vascular Emergency','Multi-trauma Activation Protocol'],
+     sch:[['จ–อา','ตลอด 24 ชั่วโมง']],
+     fac:['Trauma Bay 4 ช่อง','Mobile CT On-site','Hybrid OR','Air-medic Helipad'],
+     docs:[{n:'นพ.ชัชชัย ตราชู',s:'ศัลยแพทย์อุบัติเหตุ',a:'on',e:'🧑‍⚕️'},{n:'พญ.ณิชนันทน์ แพทย์ฉุกเฉิน',s:'เวชศาสตร์ฉุกเฉิน',a:'on',e:'👩‍⚕️'},{n:'นพ.สิทธิชัย บาดแผล',s:'ศัลยแพทย์หลอดเลือด',a:'off',e:'🧑‍⚕️'}]},
+    {id:'cardio',name:'CoE Cardiovascular',eng:'Heart & Vascular Center',icon:'❤️',c:'#e11d48',bg:'#fff1f2',badge:'Flagship',
+     floor:'ชั้น 3 อาคาร B',hours:'จ–ศ 08:00–17:00',tel:'ต่อ 310',
+     desc:'ศูนย์หัวใจและหลอดเลือดครบวงจร ตั้งแต่วินิจฉัย สวนหัวใจ ผ่าตัด ไปจนถึงฟื้นฟูสมรรถภาพ ด้วยเทคโนโลยี Cath Lab และ Hybrid OR',
+     tags:['Interventional','Cardiac Surgery','Heart Rehab'],
+     svc:['Cath Lab — PCI / TAVI / TAVR','Open Heart Surgery','Electrophysiology & Ablation','3D Echo & Cardiac Imaging','Heart Failure Clinic','Cardiac Rehabilitation'],
+     sch:[['จ–ศ','08:00 – 17:00'],['ส','08:00 – 12:00']],
+     fac:['Cath Lab 2 ห้อง','CCU 12 เตียง','Hybrid Cardiac OR','Cardiac MRI 3T'],
+     docs:[{n:'ศ.นพ.ประวิทย์ หทัยดี',s:'Interventional Cardiologist',a:'on',e:'🧑‍⚕️'},{n:'นพ.อนันต์ พิทักษ์ชีพ',s:'Cardiac Surgeon',a:'off',e:'🧑‍⚕️'},{n:'พญ.สุภาพร รัตนา',s:'Electrophysiologist',a:'on',e:'👩‍⚕️'}]},
+    {id:'neuro',name:'CoE Neurology',eng:'Brain, Spine & Neuroscience Center',icon:'🧠',c:'#4f46e5',bg:'#eef2ff',badge:'JCI',
+     floor:'ชั้น 5 อาคาร B',hours:'จ–ศ 08:00–17:00',tel:'ต่อ 510',
+     desc:'ศูนย์สมองและระบบประสาทระดับสากล รักษา Stroke, Parkinson, Epilepsy และผ่าตัดสมองด้วย Robotic Neurosurgery',
+     tags:['Stroke Center','Neurosurgery','Spine'],
+     svc:['Stroke Unit — Thrombectomy','Robotic Neurosurgery','Gamma Knife Radiosurgery','Minimally Invasive Spine','Epilepsy Center & SEEG','Deep Brain Stimulation'],
+     sch:[['จ–ศ','08:00 – 17:00'],['ส','08:00 – 12:00 (นัดล่วงหน้า)']],
+     fac:['MRI 3T Neuroimaging','Stroke Unit 8 เตียง','Neuro-ICU 10 เตียง','Intra-op Neuromonitoring'],
+     docs:[{n:'ศ.พญ.ลลิตา สมองดี',s:'Neurologist (Stroke)',a:'on',e:'👩‍⚕️'},{n:'นพ.พงษ์ศักดิ์ ประสาทแก้ว',s:'Neurosurgeon',a:'off',e:'🧑‍⚕️'},{n:'พญ.กมล เส้นประสาท',s:'Spine Surgeon',a:'on',e:'👩‍⚕️'}]},
+    {id:'ortho',name:'CoE Orthopedic',eng:'Bone, Joint & Sports Medicine',icon:'🦴',c:'#0369a1',bg:'#e0f2fe',badge:null,
+     floor:'ชั้น 4 อาคาร A',hours:'จ–ศ 08:00–18:00',tel:'ต่อ 420',
+     desc:'ศูนย์กระดูกข้อและเวชศาสตร์การกีฬา ผ่าตัดเปลี่ยนข้อด้วย MAKO Robot รักษากระดูกสันหลังและบาดเจ็บจากกีฬาครบวงจร',
+     tags:['Joint Replacement','Sports Med','Spine'],
+     svc:['MAKO Robot Knee/Hip Replacement','Arthroscopy','Spine — MISS & Open','Sports Injury Rehabilitation','Bone Tumor Surgery','Pediatric Orthopedics'],
+     sch:[['จ–ศ','08:00 – 18:00'],['ส','08:00 – 12:00']],
+     fac:['MAKO Robotic Surgery','Arthroscopy Suite 2 ห้อง','Bone Density DXA','Sports Rehab Gym'],
+     docs:[{n:'นพ.ณรงค์ กระดูกแข็ง',s:'Joint Replacement Surgeon',a:'on',e:'🧑‍⚕️'},{n:'พญ.นิภา ข้อดี',s:'Spine Surgeon',a:'on',e:'👩‍⚕️'},{n:'นพ.ชาญ เอ็นเส้น',s:'Sports Medicine',a:'off',e:'🧑‍⚕️'}]},
+    {id:'cancer',name:'CoE Cancer',eng:'Comprehensive Cancer Center',icon:'🎗️',c:'#b45309',bg:'#fffbeb',badge:'Comprehensive',
+     floor:'ชั้น 7 อาคาร C',hours:'จ–ศ 08:00–17:00',tel:'ต่อ 710',
+     desc:'ศูนย์มะเร็งครบวงจร ตั้งแต่คัดกรอง วินิจฉัย รักษาด้วยเคมีบำบัด รังสี Targeted therapy และผ่าตัด โดยทีม MDT',
+     tags:['Oncology','Radiation Therapy','Immunotherapy'],
+     svc:['PET-CT Staging & Diagnosis','Chemotherapy Day Ward','Radiation VMAT / SBRT / SRS','Targeted & Immunotherapy','Oncology & Robotic Surgery','Palliative & Supportive Care'],
+     sch:[['จ–ศ','08:00 – 17:00']],
+     fac:['TrueBeam Linear Accelerator','PET-CT Scanner','MDT Tumor Board','Oncology ICU'],
+     docs:[{n:'รศ.นพ.ชัชวาล มะเร็งหาย',s:'Medical Oncologist',a:'on',e:'🧑‍⚕️'},{n:'พญ.อุษา รังสีดี',s:'Radiation Oncologist',a:'off',e:'👩‍⚕️'},{n:'นพ.สมบัติ ผ่าตัดมะเร็ง',s:'Surgical Oncologist',a:'on',e:'🧑‍⚕️'}]},
+  ],
+  sbu:[
+    {id:'women',name:"SBU Women's Health",eng:"Women's Health & Maternity",icon:'🤱',c:'#db2777',bg:'#fdf2f8',badge:null,
+     floor:'ชั้น 6 อาคาร B',hours:'24/7 (ห้องคลอด) / OPD จ–ศ 08–17',tel:'ต่อ 610',
+     desc:'หน่วยสุขภาพสตรีและมารดาครบวงจร ดูแลตั้งแต่ฝากครรภ์ คลอดบุตร โรคนรีเวช จนถึง IVF เด็กหลอดแก้ว',
+     tags:["OB-GYN","IVF / Fertility","Oncogynecology"],
+     svc:['Antenatal & High-risk OB','Labor & Delivery (LDR)','IVF / ICSI Fertility Clinic','Gynecologic Oncology','Menopause & Hormonal Clinic','Urogynecology'],
+     sch:[['จ–อา','24 ชั่วโมง (คลอด)'],['จ–ศ','08:00 – 17:00 (OPD)']],
+     fac:['LDR Suites 6 ห้อง','NICU Level 3 — 16 เตียง','IVF Lab','Family-centered Maternity Ward'],
+     docs:[{n:'พญ.สมใจ มารดาดี',s:'Maternal-Fetal Medicine',a:'on',e:'👩‍⚕️'},{n:'พญ.รัตนา บุปผา',s:'Reproductive Medicine',a:'on',e:'👩‍⚕️'},{n:'นพ.ชัยวัฒน์ บำรุงพันธุ์',s:'Gynecologic Oncologist',a:'off',e:'🧑‍⚕️'}]},
+    {id:'child',name:'SBU Child',eng:'Pediatrics & Child Development',icon:'👶',c:'#f59e0b',bg:'#fffbeb',badge:null,
+     floor:'ชั้น 3 อาคาร A',hours:'จ–ศ 08:00–18:00',tel:'ต่อ 320',
+     desc:'หน่วยกุมารเวชกรรมและพัฒนาการเด็ก ดูแลทารกแรกเกิดถึงวัยรุ่น โดยกุมารแพทย์เฉพาะทางในบรรยากาศที่เป็นมิตรกับเด็ก',
+     tags:['Neonatology','Peds Neurology','Allergy & Immunology'],
+     svc:['Well-baby Clinic & Immunization','Neonatal ICU Care','Pediatric Neurology','Allergy & Immunology','Child Development Assessment','Adolescent Medicine'],
+     sch:[['จ–ศ','08:00 – 18:00'],['ส–อา','08:00 – 12:00']],
+     fac:['PICU 8 เตียง','NICU 16 เตียง','Child-friendly Ward','Developmental Therapy Room'],
+     docs:[{n:'พญ.มยุรี เด็กดี',s:'General Pediatrician',a:'on',e:'👩‍⚕️'},{n:'นพ.บุญชัย หนูน้อย',s:'Pediatric Allergist',a:'on',e:'🧑‍⚕️'},{n:'พญ.ศิริพร พัฒนาการ',s:'Pediatric Neurologist',a:'off',e:'👩‍⚕️'}]},
+    {id:'ppsi',name:'SBU PPSI',eng:'Plastic, Reconstructive & Aesthetic Surgery',icon:'✨',c:'#7c3aed',bg:'#f5f3ff',badge:null,
+     floor:'ชั้น 2 อาคาร C',hours:'จ–ศ 09:00–18:00',tel:'ต่อ 240',
+     desc:'หน่วยศัลยกรรมตกแต่งเสริมสร้างและความงาม ครอบคลุมการผ่าตัดเสริมสร้างหลังมะเร็ง บาดแผล และ Aesthetic Surgery',
+     tags:['Plastic Surgery','Reconstruction','Aesthetics'],
+     svc:['Reconstructive & Microsurgery','Breast Reconstruction Post-Cancer','Body Contouring','Rhinoplasty / Blepharoplasty','Scar & Burn Rehab','Laser & Injectable Aesthetics'],
+     sch:[['จ–ศ','09:00 – 18:00'],['ส','09:00 – 14:00']],
+     fac:['Aesthetic OR 2 ห้อง','Laser Suite','3D Simulation Imaging','Recovery Suites'],
+     docs:[{n:'นพ.ภูมิ ความงาม',s:'Plastic & Reconstructive Surgeon',a:'on',e:'🧑‍⚕️'},{n:'พญ.จิราภา สวยงาม',s:'Aesthetic Dermatologist',a:'on',e:'👩‍⚕️'},{n:'นพ.กิตติพงศ์ ตกแต่ง',s:'Maxillofacial Surgeon',a:'off',e:'🧑‍⚕️'}]},
+    {id:'wellness',name:'SBU Wellness',eng:'Health Promotion & Wellness Center',icon:'🌿',c:'#059669',bg:'#ecfdf5',badge:null,
+     floor:'ชั้น 1 อาคาร D',hours:'จ–ศ 07:00–18:00',tel:'ต่อ 160',
+     desc:'หน่วยส่งเสริมสุขภาพและคุณภาพชีวิตเชิงป้องกัน บริการตรวจสุขภาพ โภชนาการ Anti-aging และ Corporate Wellness',
+     tags:['Preventive Med','Anti-aging','Nutrition'],
+     svc:['Executive Health Check-up','Longevity & Anti-aging Program','Nutrition & Weight Management','Corporate Wellness Packages','Travel Medicine & Vaccines','Integrative & Holistic Care'],
+     sch:[['จ–ศ','07:00 – 18:00'],['ส','07:00 – 14:00']],
+     fac:['Dedicated Check-up Suite','Whole-body CT Screening','DNA Genomics Lab','Wellness Lounge'],
+     docs:[{n:'พญ.กนกวรรณ ดูแลดี',s:'Preventive & Anti-aging Medicine',a:'on',e:'👩‍⚕️'},{n:'นพ.ธนากร ชีวิตดี',s:'Internal Medicine / Wellness',a:'on',e:'🧑‍⚕️'},{n:'พญ.ปวีณา โภชนา',s:'Clinical Nutrition',a:'off',e:'👩‍⚕️'}]},
+  ],
+  ncd:[
+    {id:'elective',name:'Elective Surgery',eng:'Planned Surgical Programs',icon:'🔬',c:'#0f766e',bg:'#f0fdfa',badge:null,
+     floor:'ชั้น 4 อาคาร C',hours:'จ–ศ 08:00–17:00',tel:'ต่อ 450',
+     desc:'โปรแกรมผ่าตัดวางแผนครบวงจร ศัลยกรรมส่องกล้อง Robotic Surgery และ Day Surgery Program สำหรับผู้ป่วยนอก',
+     tags:['Laparoscopy','Robotic Surgery','Day Surgery'],
+     svc:['Laparoscopic Cholecystectomy','Hernia Repair — Robotic','Thyroid & Parathyroid Surgery','Colorectal & Pelvic Surgery','Day Surgery Program','Bariatric & Metabolic Surgery'],
+     sch:[['จ–ศ','08:00 – 17:00']],
+     fac:['OR Suite 8 ห้อง','da Vinci Robotic Surgery','Day Surgery Unit 20 เตียง','Pre-op Assessment Clinic'],
+     docs:[{n:'นพ.วสันต์ ผ่าตัดดี',s:'General & Laparoscopic Surgeon',a:'on',e:'🧑‍⚕️'},{n:'พญ.อัญชลี ส่องกล้อง',s:'Colorectal Surgeon',a:'on',e:'👩‍⚕️'},{n:'นพ.สุรชัย หน้าท้อง',s:'Bariatric Surgeon',a:'off',e:'🧑‍⚕️'}]},
+    {id:'ncd',name:'NCDs Focus',eng:'Non-communicable Disease Management',icon:'📊',c:'#b45309',bg:'#fffbeb',badge:null,
+     floor:'ชั้น 2 อาคาร A',hours:'จ–ศ 07:30–17:00',tel:'ต่อ 210',
+     desc:'หน่วยดูแลโรคไม่ติดต่อเรื้อรัง (NCDs) อย่างครบวงจร เบาหวาน ความดัน โรคไต ไขมัน และโรคปอดเรื้อรัง พร้อม Case Navigator',
+     tags:['Diabetes','Hypertension','CKD','COPD'],
+     svc:['Diabetes & Metabolic Clinic','Hypertension Management','CKD & Dialysis Planning','Dyslipidemia Clinic','COPD & Asthma Program','NCD Case Management Navigator'],
+     sch:[['จ–ศ','07:30 – 17:00'],['ส','07:30 – 12:00']],
+     fac:['Continuous Glucose Monitor Lab','24hr Ambulatory BP Monitoring','Pulmonary Function Lab','Dietitian Counseling Room'],
+     docs:[{n:'นพ.อรรถพล เบาหวานดี',s:'Endocrinologist',a:'on',e:'🧑‍⚕️'},{n:'พญ.ปาริชาต แพทย์ไต',s:'Nephrologist',a:'on',e:'👩‍⚕️'},{n:'Dr. James Wilson',s:'Internal Medicine / NCDs',a:'off',e:'🧑‍⚕️'}]},
+  ]
+};
+
+let af='all', sv='';
+function renderGrid(arr, gid, catLabel) {
+  const g=document.getElementById(gid);
+  const f=arr.filter(d=>{
+    return sv===''||[d.name,d.eng,...d.tags].join(' ').toLowerCase().includes(sv);
+  });
+  g.innerHTML=f.map((d,i)=>`
+    <div class="dc" style="--c:${d.c};--bg:${d.bg};animation-delay:${i*.055}s" onclick="openDept('${gid}','${d.id}')">
+      ${d.badge?`<div class="dc-badge">${d.badge}</div>`:''}
+      <div class="dc-icon" style="background:${d.bg}">${d.icon}</div>
+      <div class="dc-cat">${catLabel}</div>
+      <div class="dc-name">${d.name}</div>
+      <div class="dc-eng">${d.eng}</div>
+      <div class="dc-tags">${d.tags.map(t=>`<span class="dtag">${t}</span>`).join('')}</div>
+      <div class="dc-arr">รายละเอียด →</div>
+    </div>`).join('')||`<p style="color:#94a3b8;font-size:.84rem;padding:6px 0;">ไม่พบผลการค้นหา</p>`;
+  const blk=document.getElementById('blk-'+gid.replace('g',''));
+  if(blk) blk.style.display=(f.length===0&&sv!=='')?'none':'';
+}
+function renderAll(){
+  const show=k=>(af==='all'||af===k);
+  ['coe','sbu','ncd'].forEach(k=>{
+    const blk=document.getElementById('blk-'+k);
+    if(!show(k)){blk&&(blk.style.display='none');return;}
+    blk&&(blk.style.display='');
+    const labels={coe:'Center of Excellence',sbu:'Strategic Business Unit',ncd:'Focus Program'};
+    renderGrid(DB[k],'g'+k,labels[k]);
+  });
+}
+function setPill(el){
+  document.querySelectorAll('.pill').forEach(p=>p.classList.remove('on'));
+  el.classList.add('on'); af=el.dataset.f; renderAll();
+}
+function filterAll(){sv=document.getElementById('si').value.toLowerCase();renderAll();}
+
+function openDept(gid,id){
+  const cat=gid==='gcoe'?'coe':gid==='gsbu'?'sbu':'ncd';
+  const d=DB[cat].find(x=>x.id===id);
+  if(!d)return;
+  const cl={coe:'Centers of Excellence',sbu:'Strategic Business Units',ncd:'NCDs Focus & Elective'};
+  document.getElementById('bc-cat').textContent=cl[cat];
+  document.getElementById('bc-nm').textContent=d.name;
+  document.getElementById('dhbg').style.background=`linear-gradient(130deg,${d.c} 0%,${d.c}bb 100%)`;
+  document.getElementById('dhwm').textContent=d.icon;
+  document.getElementById('dhico').textContent=d.icon;
+  document.getElementById('dctag').textContent=cl[cat];
+  document.getElementById('dttl').textContent=d.name+' — '+d.eng;
+  document.getElementById('ddsc').textContent=d.desc;
+  document.getElementById('dfl').innerHTML='🏢 '+d.floor;
+  document.getElementById('dhr').innerHTML='⏰ '+d.hours;
+  document.getElementById('dtl').innerHTML='📞 '+d.tel;
+
+  document.getElementById('flagship-menu').style.display = (d.id === 'ppsi') ? 'block' : 'none';
+
+  document.getElementById('dash').style.display='none';
+  document.getElementById('dp').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function showDash(){
+  document.getElementById('dp').style.display='none';
+  document.getElementById('dash').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderAll();
+</script>
+</body>
+</html>
