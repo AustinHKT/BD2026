@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top 5 Flagship Products (Book2) — Q2-Q3 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAFAF8;
+  --bg-warm:#F5F3EF;
+  --bg-card:#FFFFFF;
+  --text:#2D2A26;
+  --text-muted:#8A857D;
+  --text-light:#B5B0A8;
+  --accent:#5B8C7A;
+  --accent-light:#E8F0EC;
+  --accent-dark:#3D6B5A;
+  --gold:#C5974B;
+  --gold-light:#FBF5EC;
+  --rose:#C47A7A;
+  --rose-light:#FBF0F0;
+  --blue:#6B8AAE;
+  --blue-light:#EEF3F8;
+  --purple:#8B7EAE;
+  --purple-light:#F2F0F8;
+  --border:#E8E5E0;
+  --border-light:#F0EDE8;
+  --shadow:0 1px 3px rgba(45,42,38,0.04),0 4px 12px rgba(45,42,38,0.03);
+  --shadow-md:0 2px 8px rgba(45,42,38,0.06),0 8px 24px rgba(45,42,38,0.04);
+  --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.container{max-width:1080px;margin:0 auto;padding:0 28px}
+
+/* Hero */
+.hero{padding:72px 0 40px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;padding:8px 20px;background:var(--accent-light);border-radius:100px;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent-dark);margin-bottom:28px}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,4.5vw,50px);font-weight:400;line-height:1.2;color:var(--text);margin-bottom:20px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{font-size:16px;color:var(--text-muted);max-width:640px;margin:0 auto;line-height:1.8}
+.hero .note{font-size:13px;color:var(--text-light);margin-top:14px;padding:12px 20px;background:var(--bg-warm);border-radius:10px;display:inline-block}
+
+/* Stats Strip */
+.stats{display:flex;gap:1px;background:var(--border-light);border-radius:var(--radius);overflow:hidden;margin:32px 0;box-shadow:var(--shadow)}
+.stat{flex:1;background:var(--bg-card);padding:22px 16px;text-align:center}
+.stat .sn{font-family:'DM Serif Display',serif;font-size:28px;color:var(--accent)}
+.stat .sl{font-size:11px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--text-light);margin-top:3px}
+
+/* Criteria */
+.criteria{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:16px 0 48px}
+.cr{background:var(--bg-card);border:1px solid var(--border-light);border-radius:12px;padding:18px 12px;text-align:center;box-shadow:var(--shadow)}
+.cr .ci{font-size:24px;margin-bottom:8px}
+.cr .ct{font-size:11px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:var(--accent)}
+.cr .cd{font-size:10px;color:var(--text-light);margin-top:2px}
+
+/* Section Title */
+.stitle{padding:48px 0 20px;text-align:center}
+.stitle h2{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;color:var(--text)}
+.stitle p{color:var(--text-muted);font-size:14px;margin-top:6px}
+.stitle .line{width:48px;height:2px;background:var(--accent);margin:16px auto 0;border-radius:2px}
+
+/* Product Cards */
+.cards{display:flex;flex-direction:column;gap:28px;padding-bottom:32px}
+.pcard{background:var(--bg-card);border:1px solid var(--border-light);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow 0.3s,transform 0.3s}
+.pcard:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+
+.pcard-top{display:flex;align-items:center;gap:18px;padding:28px 32px 0}
+.rank{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:20px;flex-shrink:0}
+.r1 .rank{background:linear-gradient(135deg,#F9EFCE,#F5E6B8);color:var(--gold);border:1px solid #E8D5A0}
+.r2 .rank{background:var(--accent-light);color:var(--accent-dark);border:1px solid #C8DDD4}
+.r3 .rank{background:var(--gold-light);color:var(--gold);border:1px solid #E8D8BE}
+.r4 .rank{background:var(--rose-light);color:var(--rose);border:1px solid #E8CECE}
+.r5 .rank{background:var(--purple-light);color:var(--purple);border:1px solid #D8D2E8}
+.pcard-top .dept{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.pcard-top h3{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;line-height:1.35;color:var(--text)}
+
+.pcard-body{padding:20px 32px 32px}
+
+/* Metrics */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px}
+.met{background:var(--bg-warm);border-radius:10px;padding:14px 10px;text-align:center}
+.met .mv{font-family:'DM Serif Display',serif;font-size:18px;color:var(--accent-dark)}
+.met .ml{font-size:10px;font-weight:600;letter-spacing:0.4px;text-transform:uppercase;color:var(--text-light);margin-top:3px}
+
+/* Analysis Grid */
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.abox{background:var(--bg);border-radius:12px;padding:20px}
+.abox h4{font-size:12px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.abox ul{list-style:none;padding:0}
+.abox li{font-size:13px;color:#5A5650;padding:5px 0 5px 18px;position:relative;line-height:1.6}
+.abox li::before{content:'';position:absolute;left:0;top:12px;width:6px;height:6px;border-radius:50%}
+.c-usp{color:var(--accent)}.usp-dot::before{background:var(--accent)}
+.c-trend{color:var(--gold)}.trend-dot::before{background:var(--gold)}
+.c-target{color:var(--purple)}.target-dot::before{background:var(--purple)}
+.c-strat{color:var(--rose)}.strat-dot::before{background:var(--rose)}
+
+/* Revenue Chart */
+.chart-section{padding:32px 0}
+.chart-wrap{background:var(--bg-card);border:1px solid var(--border-light);border-radius:18px;padding:36px;box-shadow:var(--shadow)}
+.bars{display:flex;align-items:flex-end;gap:20px;height:180px;margin-top:20px;padding:0 12px}
+.bw{flex:1;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end}
+.bar{width:100%;border-radius:10px 10px 4px 4px;position:relative;min-height:12px;transition:all 0.3s}
+.bar:hover{filter:brightness(1.05);transform:scaleY(1.03);transform-origin:bottom}
+.bar .bl{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:700;white-space:nowrap}
+.bn{font-size:10px;font-weight:600;color:var(--text-muted);margin-top:10px;text-align:center;text-transform:uppercase;letter-spacing:0.3px;line-height:1.4}
+.b1{background:linear-gradient(180deg,#E8D5A0,#C5974B)}.b2{background:linear-gradient(180deg,#B8D4C8,#5B8C7A)}
+.b3{background:linear-gradient(180deg,#E8D5A0,#B8934A)}.b4{background:linear-gradient(180deg,#E0C0C0,#C47A7A)}
+.b5{background:linear-gradient(180deg,#C8BEE0,#8B7EAE)}
+
+/* Timeline */
+.tl-section{padding:32px 0 40px}
+.tl-wrap{background:var(--bg-card);border:1px solid var(--border-light);border-radius:18px;padding:36px;box-shadow:var(--shadow)}
+.tl{display:flex;gap:0;position:relative;margin-top:24px}
+.tl::before{content:'';position:absolute;top:22px;left:5%;right:5%;height:2px;background:var(--border);border-radius:2px}
+.tl-item{flex:1;text-align:center;position:relative;padding-top:44px}
+.tl-dot{width:12px;height:12px;border-radius:50%;position:absolute;top:17px;left:50%;transform:translateX(-50%);z-index:1;border:2px solid var(--bg-card)}
+.q2d{background:var(--accent);box-shadow:0 0 0 3px var(--accent-light)}.q3d{background:var(--gold);box-shadow:0 0 0 3px var(--gold-light)}
+.tl-item .mn{font-family:'DM Serif Display',serif;font-size:15px;color:var(--text);margin-bottom:4px}
+.tl-item .ev{font-size:11px;color:var(--text-muted);line-height:1.6}
+
+/* Ecosystem */
+.eco-section{padding:32px 0}
+.eco-wrap{background:var(--bg-card);border:1px solid var(--border-light);border-radius:18px;padding:40px;box-shadow:var(--shadow);text-align:center}
+.eco-wrap p{font-size:14px;color:var(--text-muted);margin-top:18px;line-height:1.7}
+.eco-wrap p strong{color:var(--accent-dark)}
+
+/* Compare */
+.compare-section{padding:32px 0}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+.cbox{border-radius:16px;padding:28px;border:1px solid var(--border-light);box-shadow:var(--shadow)}
+.cbox.b1bg{background:linear-gradient(135deg,#FBF5EC,#FFF)}
+.cbox.b2bg{background:linear-gradient(135deg,var(--accent-light),#FFF)}
+.cbox .ctag{display:inline-block;padding:4px 12px;border-radius:8px;font-size:11px;font-weight:700;letter-spacing:0.5px;margin-bottom:10px}
+.b1bg .ctag{background:rgba(197,151,75,0.15);color:var(--gold)}
+.b2bg .ctag{background:rgba(91,140,122,0.15);color:var(--accent-dark)}
+.cbox h3{font-family:'DM Serif Display',serif;font-size:17px;font-weight:400;margin-bottom:12px;color:var(--text)}
+.cbox ul{list-style:none;padding:0}
+.cbox li{font-size:13px;color:#5A5650;padding:4px 0 4px 18px;position:relative}
+.cbox li::before{content:'';position:absolute;left:2px;top:11px;width:5px;height:5px;border-radius:50%}
+.b1bg li::before{background:var(--gold)}.b2bg li::before{background:var(--accent)}
+.cbox .role{font-size:12px;font-weight:600;margin-top:14px;padding-top:12px;border-top:1px solid var(--border-light)}
+.b1bg .role{color:var(--gold)}.b2bg .role{color:var(--accent-dark)}
+
+/* Summary */
+.summary{padding:48px 0 80px}
+.summary-card{background:linear-gradient(135deg,var(--accent-light),var(--bg-warm));border:1px solid #C8DDD4;border-radius:20px;padding:44px;text-align:center}
+.summary-card h2{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;margin-bottom:16px;color:var(--text)}
+.summary-card p{color:#5A5650;font-size:15px;max-width:680px;margin:0 auto;line-height:1.9}
+.stags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:24px}
+.stags span{padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;background:var(--bg-card);border:1px solid var(--border);color:var(--text);box-shadow:var(--shadow)}
+
+@media(max-width:768px){
+.stats{flex-wrap:wrap}.stat{flex:0 0 calc(50% - 0.5px)}
+.criteria{grid-template-columns:repeat(2,1fr)}
+.metrics{grid-template-columns:repeat(2,1fr)}
+.agrid{grid-template-columns:1fr}
+.tl{flex-wrap:wrap}.tl-item{flex:0 0 33%}
+.compare-grid{grid-template-columns:1fr}
+.pcard-top,.pcard-body{padding-left:20px;padding-right:20px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Hero -->
+<section class="hero">
+<div class="hero-badge"><span class="dot"></span>Advanced Flagship Analysis — Book 2</div>
+<h1>Top 5 <em>Flagship Products</em><br>สำหรับทำการตลาด Q2–Q3 2026</h1>
+<p>วิเคราะห์จาก 10 แผนก · 27 Flagship + 23 Supporting Products<br>คัดเลือกบริการเฉพาะทางชั้นสูงที่มีศักยภาพสร้างรายได้สูงสุดในช่วงเมษายน — กันยายน 2026</p>
+<div class="note">✦ Book2 เป็นกลุ่มบริการ Advanced / Specialized — มูลค่าต่อเคสสูง · เน้น Clinical Excellence & Medical Tourism</div>
+</section>
+
+<!-- Stats -->
+<div class="stats">
+<div class="stat"><div class="sn">10</div><div class="sl">แผนก</div></div>
+<div class="stat"><div class="sn">27</div><div class="sl">Flagship Products</div></div>
+<div class="stat"><div class="sn">23</div><div class="sl">Supporting Products</div></div>
+<div class="stat"><div class="sn">5</div><div class="sl">Top Picks</div></div>
+<div class="stat"><div class="sn">Q2–Q3</div><div class="sl">เม.ย. — ก.ย.</div></div>
+</div>
+
+<!-- Criteria -->
+<div class="criteria">
+<div class="cr"><div class="ci">📈</div><div class="ct">Market CAGR</div><div class="cd">ตลาดโลกโตแรง</div></div>
+<div class="cr"><div class="ci">💎</div><div class="ct">Revenue / Case</div><div class="cd">มูลค่าต่อเคสสูง</div></div>
+<div class="cr"><div class="ci">🌏</div><div class="ct">Med-Tourism</div><div class="cd">ดึงดูดต่างชาติได้</div></div>
+<div class="cr"><div class="ci">🔬</div><div class="ct">Clinical Edge</div><div class="cd">เทคนิคเหนือคู่แข่ง</div></div>
+<div class="cr"><div class="ci">📅</div><div class="ct">Q2-Q3 Fit</div><div class="cd">เหมาะทำตลาดช่วงนี้</div></div>
+</div>
+
+<!-- Top 5 -->
+<div class="stitle"><h2>🏆 Top 5 Flagship Products</h2><p>เรียงตามศักยภาพรวม — Market Trend × Revenue × Differentiation</p><div class="line"></div></div>
+<div class="cards">
+
+<!-- #1 -->
+<div class="pcard r1">
+<div class="pcard-top">
+<div class="rank">#1</div>
+<div><div class="dept">SBU PPSI</div><h3>Body Contour + Sex Change (Gender Affirming Surgery)</h3></div>
+</div>
+<div class="pcard-body">
+<div class="metrics">
+<div class="met"><div class="mv">9.6/10</div><div class="ml">Overall Score</div></div>
+<div class="met"><div class="mv">$10K–17K</div><div class="ml">Revenue / Case</div></div>
+<div class="met"><div class="mv">60%+</div><div class="ml">Global SRS Share</div></div>
+<div class="met"><div class="mv">18.9%</div><div class="ml">Market CAGR</div></div>
+</div>
+<div class="agrid">
+<div class="abox"><h4><span class="c-usp">●</span> จุดเด่นในการขาย</h4>
+<ul>
+<li class="usp-dot">ไทยครอง 60%+ ของ Gender Reassignment Surgery ทั่วโลก — "Sex Change Capital of the World"</li>
+<li class="usp-dot">Body Contouring: Lipo, Tummy Tuck, Body Lift — Demand พุ่ง 150% ในปี 2024</li>
+<li class="usp-dot">Revenue per case สูงมาก: SRS $10,000–17,300 / Body Contour $3,000–15,000</li>
+<li class="usp-dot">ศัลยแพทย์ไทยมีชื่อเสียงระดับโลก — ผลลัพธ์ 98–99.7% ผู้ป่วยพอใจ</li>
+</ul></div>
+<div class="abox"><h4><span class="c-trend">●</span> แนวโน้มการขาย</h4>
+<ul>
+<li class="trend-dot">Medical Tourism ไทย CAGR 10–19% — Cosmetic & Gender Surgery เป็น Top Driver</li>
+<li class="trend-dot">Medical Visa 1 ปี + พัก 90 วัน → รองรับ Recovery Period ได้สมบูรณ์</li>
+<li class="trend-dot">Q2–Q3 = Low Season = ตั๋วเครื่องบิน/ที่พักถูก → Tourist ตัดสินใจมาง่ายขึ้น</li>
+<li class="trend-dot">Social Acceptance + LGBTQ+ Rights Movement ทั่วโลก → Demand พุ่ง</li>
+</ul></div>
+<div class="abox"><h4><span class="c-target">●</span> กลุ่มเป้าหมาย</h4>
+<ul>
+<li class="target-dot">Transgender Community ทั่วโลก: US, Europe, Australia, Japan, Middle East</li>
+<li class="target-dot">Body Contour: ผู้หญิง 25–50 ปี รายได้สูง ทั้งไทยและต่างชาติ</li>
+<li class="target-dot">Post-Bariatric Surgery Patients ที่ต้องการ Body Reshaping</li>
+<li class="target-dot">Medical Tourist Agencies & Facilitators ระดับ International</li>
+</ul></div>
+<div class="abox"><h4><span class="c-strat">●</span> กลยุทธ์ Q2–Q3</h4>
+<ul>
+<li class="strat-dot">Pride Month (มิ.ย.) Campaign: "Your True Self, Our Expertise"</li>
+<li class="strat-dot">Partnership กับ Medical Tourism Facilitators ระดับ Global</li>
+<li class="strat-dot">Multilingual Content: EN, CN, JP, AR, RU — YouTube, IG, Xiaohongshu</li>
+<li class="strat-dot">Summer Body Package: Lipo + Contour + Recovery Stay = All-Inclusive</li>
+</ul></div>
+</div>
+</div>
+</div>
+
+<!-- #2 -->
+<div class="pcard r2">
+<div class="pcard-top">
+<div class="rank">#2</div>
+<div><div class="dept">SBU Wellness</div><h3>Personalized Preventive + Gene Test Suite (Circle / Encode / Heritage WES)</h3></div>
+</div>
+<div class="pcard-body">
+<div class="metrics">
+<div class="met"><div class="mv">9.3/10</div><div class="ml">Overall Score</div></div>
+<div class="met"><div class="mv">20.5%</div><div class="ml">Genetic Test CAGR</div></div>
+<div class="met"><div class="mv">$20B</div><div class="ml">Gene Test Market '26</div></div>
+<div class="met"><div class="mv">★★★★★</div><div class="ml">Future-Proof</div></div>
+</div>
+<div class="agrid">
+<div class="abox"><h4><span class="c-usp">●</span> จุดเด่นในการขาย</h4>
+<ul>
+<li class="usp-dot">Personalized Preventive Medicine = Mega Trend — "รู้ก่อน ป้องกันได้"</li>
+<li class="usp-dot">ครอบคลุม 3 กลุ่มโรค: Cancer (Encode), Cardio+Neuro (Heritage), Wellness (Circle)</li>
+<li class="usp-dot">เชื่อมต่อกับ CoE ทุกแผนก → พบเสี่ยง = ส่งต่อรักษาทันที</li>
+<li class="usp-dot">Asia Pacific Genetic Testing CAGR 23.5% — เติบโตเร็วที่สุดในโลก</li>
+</ul></div>
+<div class="abox"><h4><span class="c-trend">●</span> แนวโน้มการขาย</h4>
+<ul>
+<li class="trend-dot">ตลาด Genetic Testing $20B ในปี 2026 → โตถึง $93B ภายินปี 2034</li>
+<li class="trend-dot">Personalized Nutrition & Wellness ครอง 32% ของตลาด Personalized Medicine</li>
+<li class="trend-dot">คนไทย 48% ถือว่าสุขภาพเป็นการลงทุนอันดับ 1 — พร้อมจ่ายเพื่อป้องกัน</li>
+<li class="trend-dot">Gene Test เป็น Premium Add-on ที่ขายได้ดีกับ Wellness Tourist</li>
+</ul></div>
+<div class="abox"><h4><span class="c-target">●</span> กลุ่มเป้าหมาย</h4>
+<ul>
+<li class="target-dot">Health-Conscious Professionals อายุ 35–55 ปี รายได้สูง</li>
+<li class="target-dot">ผู้มีประวัติครอบครัวเป็นมะเร็ง / โรคหัวใจ / โรคประสาท</li>
+<li class="target-dot">Wellness Tourist ที่มาทำ Comprehensive Health Screening</li>
+<li class="target-dot">Corporate Executives ที่ต้องการ Executive Gene Profiling</li>
+</ul></div>
+<div class="abox"><h4><span class="c-strat">●</span> กลยุทธ์ Q2–Q3</h4>
+<ul>
+<li class="strat-dot">"Know Your DNA, Own Your Future" — Mid-Year Gene Test Package</li>
+<li class="strat-dot">Bundle: Check-up Premium + Gene Test = "Ultimate Preventive Package"</li>
+<li class="strat-dot">KOL / แพทย์ผู้เชี่ยวชาญอธิบาย Gene Test ในภาษาง่ายๆ</li>
+<li class="strat-dot">Corporate B2B: Executive Gene Profiling สำหรับ C-Suite</li>
+</ul></div>
+</div>
+</div>
+</div>
+
+<!-- #3 -->
+<div class="pcard r3">
+<div class="pcard-top">
+<div class="rank">#3</div>
+<div><div class="dept">CoE Cardiovascular</div><h3>Structural Heart & Valvular Intervention — TAVI</h3></div>
+</div>
+<div class="pcard-body">
+<div class="metrics">
+<div class="met"><div class="mv">9.0/10</div><div class="ml">Overall Score</div></div>
+<div class="met"><div class="mv">14.9–18.5%</div><div class="ml">TAVR Global CAGR</div></div>
+<div class="met"><div class="mv">$8.18B</div><div class="ml">TAVR Market '25</div></div>
+<div class="met"><div class="mv">Fastest</div><div class="ml">APAC Growth</div></div>
+</div>
+<div class="agrid">
+<div class="abox"><h4><span class="c-usp">●</span> จุดเด่นในการขาย</h4>
+<ul>
+<li class="usp-dot">TAVI = Minimally Invasive Valve Replacement — ไม่ต้องผ่าตัดเปิดหัวใจ ฟื้นตัวเร็ว</li>
+<li class="usp-dot">ตลาด TAVR $8.18B (2025) → $32.8B (2035) — เติบโตแรงต่อเนื่อง</li>
+<li class="usp-dot">Asia Pacific = ภูมิภาคที่โตเร็วที่สุดในโลก สำหรับ Structural Heart</li>
+<li class="usp-dot">Revenue per case สูงมาก (หลักล้านบาท) — Highest Revenue Procedure</li>
+</ul></div>
+<div class="abox"><h4><span class="c-trend">●</span> แนวโน้มการขาย</h4>
+<ul>
+<li class="trend-dot">ผู้สูงอายุไทย 14 ล้านคน + Aortic Stenosis เป็นปัญหาหลัก</li>
+<li class="trend-dot">TAVI ขยาย Indication → Intermediate/Low-Risk = ตลาดใหญ่ขึ้นมาก</li>
+<li class="trend-dot">Structural Heart APAC โต 29% ใน Procedural Volume</li>
+<li class="trend-dot">Med-Tourist จากตะวันออกกลาง, CLMV, South Asia เพิ่มต่อเนื่อง</li>
+</ul></div>
+<div class="abox"><h4><span class="c-target">●</span> กลุ่มเป้าหมาย</h4>
+<ul>
+<li class="target-dot">ผู้ป่วย Aortic Stenosis อายุ 65+ ความเสี่ยงสูงจากการผ่าตัดเปิด</li>
+<li class="target-dot">Medical Tourist จาก Qatar, Oman, Kuwait, Bangladesh, Cambodia</li>
+<li class="target-dot">Cardiologist Referral Network ทั้งในไทยและต่างประเทศ</li>
+<li class="target-dot">ผู้ป่วยที่ตรวจพบจาก Check-up / Cardiac Screening</li>
+</ul></div>
+<div class="abox"><h4><span class="c-strat">●</span> กลยุทธ์ Q2–Q3</h4>
+<ul>
+<li class="strat-dot">"Heart Without Open Surgery" — เน้นว่าไม่ต้องผ่าตัดเปิดหน้าอก</li>
+<li class="strat-dot">CME / Conference: เชิญแพทย์ต่างประเทศดูงาน TAVI Center</li>
+<li class="strat-dot">Video Case Study ผู้ป่วยสูงอายุที่ฟื้นตัวเร็วหลัง TAVI</li>
+<li class="strat-dot">World Heart Day (29 ก.ย.) → Awareness + Patient Referral Campaign</li>
+</ul></div>
+</div>
+</div>
+</div>
+
+<!-- #4 -->
+<div class="pcard r4">
+<div class="pcard-top">
+<div class="rank">#4</div>
+<div><div class="dept">CoE Cancer</div><h3>Breast Conserving + Skin Cancer MOHS + Rectal Sphincter Preserving</h3></div>
+</div>
+<div class="pcard-body">
+<div class="metrics">
+<div class="met"><div class="mv">8.7/10</div><div class="ml">Overall Score</div></div>
+<div class="met"><div class="mv">25%</div><div class="ml">Oncology Share</div></div>
+<div class="met"><div class="mv">#1</div><div class="ml">Treatment Segment</div></div>
+<div class="met"><div class="mv">★★★★★</div><div class="ml">Differentiation</div></div>
+</div>
+<div class="agrid">
+<div class="abox"><h4><span class="c-usp">●</span> จุดเด่นในการขาย</h4>
+<ul>
+<li class="usp-dot">Oncology ครอง 25% ของ Medical Tourism ไทย — ใหญ่ที่สุดใน Treatment Type</li>
+<li class="usp-dot">"Conserving / Preserving" = รักษามะเร็ง แต่รักษาอวัยวะไว้ → คุณภาพชีวิตดีกว่า</li>
+<li class="usp-dot">MOHS Surgery สำหรับ Skin Cancer = กำจัดมะเร็งแบบ Layer-by-Layer แม่นยำสูงสุด</li>
+<li class="usp-dot">Breast Conserving: ไม่ต้องตัดเต้านมทั้งหมด / Sphincter Preserving: ไม่ต้องทำทวารเทียม</li>
+</ul></div>
+<div class="abox"><h4><span class="c-trend">●</span> แนวโน้มการขาย</h4>
+<ul>
+<li class="trend-dot">NCDs คร่าชีวิต 400,000+ คน/ปีในไทย — มะเร็งเป็นอันดับต้นๆ</li>
+<li class="trend-dot">Cancer Treatment ในไทยถูกกว่าตะวันตก 30–70% แต่คุณภาพเทียบเท่า</li>
+<li class="trend-dot">Advanced Technique = จุดขายที่ชัดเจนเหนือ รพ. ทั่วไป</li>
+<li class="trend-dot">Cross-sell จาก Colonoscope (Book1) + Gene Test Encode → Cancer Treatment</li>
+</ul></div>
+<div class="abox"><h4><span class="c-target">●</span> กลุ่มเป้าหมาย</h4>
+<ul>
+<li class="target-dot">ผู้ป่วยมะเร็งเต้านม Stage I–II ที่ต้องการรักษาอวัยวะ</li>
+<li class="target-dot">ผู้ป่วย Skin Cancer: Expats ในไทย, Tourist จาก Australia, Europe</li>
+<li class="target-dot">ผู้ป่วยมะเร็งลำไส้ตรงที่ต้องการหลีกเลี่ยง Colostomy</li>
+<li class="target-dot">Medical Tourist จากประเทศที่มี Wait Time นาน (UK, Canada)</li>
+</ul></div>
+<div class="abox"><h4><span class="c-strat">●</span> กลยุทธ์ Q2–Q3</h4>
+<ul>
+<li class="strat-dot">"Cancer Care, Life Preserved" — เน้น Organ Preserving = คุณภาพชีวิตดี</li>
+<li class="strat-dot">Breast Cancer Awareness Build-up ตั้งแต่ Q3 → เต็มที่ ต.ค.</li>
+<li class="strat-dot">Patient Testimonial: เรื่องราวผู้ป่วยรักษาสำเร็จด้วยเทคนิคขั้นสูง</li>
+<li class="strat-dot">Funnel: Gene Test → Screening → Diagnosis → Advanced Surgery</li>
+</ul></div>
+</div>
+</div>
+</div>
+
+<!-- #5 -->
+<div class="pcard r5">
+<div class="pcard-top">
+<div class="rank">#5</div>
+<div><div class="dept">CoE Cardiovascular</div><h3>EP Study and RF Ablation (Electrophysiology)</h3></div>
+</div>
+<div class="pcard-body">
+<div class="metrics">
+<div class="met"><div class="mv">8.4/10</div><div class="ml">Overall Score</div></div>
+<div class="met"><div class="mv">11.5%</div><div class="ml">EP Market CAGR</div></div>
+<div class="met"><div class="mv">Curative</div><div class="ml">Treatment Type</div></div>
+<div class="met"><div class="mv">★★★★☆</div><div class="ml">Scalability</div></div>
+</div>
+<div class="agrid">
+<div class="abox"><h4><span class="c-usp">●</span> จุดเด่นในการขาย</h4>
+<ul>
+<li class="usp-dot">"รักษาหัวใจเต้นผิดจังหวะให้หายขาด" — ไม่ต้องกินยาตลอดชีวิต</li>
+<li class="usp-dot">Minimally Invasive: สอดสายสวนผ่านหลอดเลือด → ฟื้นตัว 1–2 วัน</li>
+<li class="usp-dot">Atrial Fibrillation พบมากขึ้นในผู้สูงอายุ → ตลาดขยายตัว</li>
+<li class="usp-dot">ราคาในไทยถูกกว่าตะวันตกหลายเท่า แต่ใช้เทคโนโลยี 3D Mapping เหมือนกัน</li>
+</ul></div>
+<div class="abox"><h4><span class="c-trend">●</span> แนวโน้มการขาย</h4>
+<ul>
+<li class="trend-dot">Cardiac EP Market CAGR 11.5% — โตจาก Aging + AF Epidemic</li>
+<li class="trend-dot">Arrhythmia ในไทยเพิ่มขึ้นตาม Lifestyle Disease (เครียด, ขาด Exercise)</li>
+<li class="trend-dot">3D Mapping + Cryoablation → ผลลัพธ์ดีขึ้น, ผู้ป่วยเลือกรักษาเพิ่ม</li>
+<li class="trend-dot">Cross-sell จาก Check-up: ตรวจพบ Arrhythmia → Refer มา EP Lab</li>
+</ul></div>
+<div class="abox"><h4><span class="c-target">●</span> กลุ่มเป้าหมาย</h4>
+<ul>
+<li class="target-dot">ผู้ป่วยหัวใจเต้นผิดจังหวะ (AF, SVT, VT) อายุ 40–75 ปี</li>
+<li class="target-dot">คนที่กินยาคุมจังหวะหัวใจมานาน ต้องการ "หายขาด"</li>
+<li class="target-dot">Medical Tourist จากตะวันออกกลาง, South Asia ที่ต้องรอคิวนาน</li>
+<li class="target-dot">ผู้ป่วยที่ Wearable Device ตรวจพบ AF → ส่งต่อ EP</li>
+</ul></div>
+<div class="abox"><h4><span class="c-strat">●</span> กลยุทธ์ Q2–Q3</h4>
+<ul>
+<li class="strat-dot">"Beat Right, Live Free" — RF Ablation รักษาหัวใจเต้นผิดจังหวะหายขาด</li>
+<li class="strat-dot">Educational Content: "ไม่ต้องกินยาตลอดชีวิต"</li>
+<li class="strat-dot">Wearable Partnership: Apple Watch / Garmin ตรวจจับ AF → EP</li>
+<li class="strat-dot">World Heart Day (29 ก.ย.) → Combined Campaign กับ TAVI</li>
+</ul></div>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- Revenue -->
+<section class="chart-section">
+<div class="stitle"><h2>Revenue Impact Projection</h2><p>ศักยภาพรายได้ Q2–Q3 — Revenue/Case × Volume × Med-Tourism Multiplier</p><div class="line"></div></div>
+<div class="chart-wrap">
+<div class="bars">
+<div class="bw"><div class="bar b1" style="height:95%"><div class="bl" style="color:var(--gold)">●●●●●</div></div><div class="bn">PPSI<br>Body+SRS</div></div>
+<div class="bw"><div class="bar b2" style="height:82%"><div class="bl" style="color:var(--accent)">●●●●○</div></div><div class="bn">Gene Test<br>Suite</div></div>
+<div class="bw"><div class="bar b3" style="height:78%"><div class="bl" style="color:var(--gold)">●●●●○</div></div><div class="bn">TAVI<br>Structural</div></div>
+<div class="bw"><div class="bar b4" style="height:68%"><div class="bl" style="color:var(--rose)">●●●○○</div></div><div class="bn">Cancer<br>Advanced</div></div>
+<div class="bw"><div class="bar b5" style="height:58%"><div class="bl" style="color:var(--purple)">●●●○○</div></div><div class="bn">EP Study<br>Ablation</div></div>
+</div>
+<p style="text-align:center;font-size:11px;color:var(--text-light);margin-top:16px">*Revenue Potential Score เป็นการประเมินเชิงเปรียบเทียบ ไม่ใช่ตัวเลขรายได้จริง</p>
+</div>
+</section>
+
+<!-- Timeline -->
+<section class="tl-section">
+<div class="stitle"><h2>Seasonal Campaign Timeline</h2><p>แผนการตลาดตาม Seasonal Opportunity ใน Q2–Q3</p><div class="line"></div></div>
+<div class="tl-wrap">
+<div class="tl">
+<div class="tl-item active"><div class="tl-dot q2d"></div><div class="mn">เม.ย.</div><div class="ev">Songkran Beauty<br>Body Contour<br>Summer Package<br>Gene Test Launch</div></div>
+<div class="tl-item active"><div class="tl-dot q2d"></div><div class="mn">พ.ค.</div><div class="ev">Pride Center Push<br>SRS Campaign<br>Corporate Gene<br>Test B2B</div></div>
+<div class="tl-item active"><div class="tl-dot q2d"></div><div class="mn">มิ.ย.</div><div class="ev">🏳️‍🌈 Pride Month<br>SRS Spotlight<br>Cancer Awareness<br>MOHS Promo</div></div>
+<div class="tl-item active"><div class="tl-dot q3d"></div><div class="mn">ก.ค.</div><div class="ev">Heart Health<br>TAVI Education<br>EP Study Push<br>Heritage WES</div></div>
+<div class="tl-item active"><div class="tl-dot q3d"></div><div class="mn">ส.ค.</div><div class="ev">วันแม่<br>Breast Conserving<br>Cancer Screening<br>Women's Health</div></div>
+<div class="tl-item active"><div class="tl-dot q3d"></div><div class="mn">ก.ย.</div><div class="ev">World Heart Day<br>TAVI + EP Ablation<br>Spotlight<br>Year-End Planning</div></div>
+</div>
+</div>
+</section>
+
+<!-- Ecosystem -->
+<section class="eco-section">
+<div class="stitle"><h2>Cross-Sell Ecosystem</h2><p>Gene Test Suite เป็น Intelligence Hub เชื่อมทุก Flagship</p><div class="line"></div></div>
+<div class="eco-wrap">
+<svg viewBox="0 0 820 320" xmlns="http://www.w3.org/2000/svg" style="max-width:680px;width:100%">
+<rect x="310" y="120" width="200" height="80" rx="16" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="2"/>
+<text x="410" y="154" text-anchor="middle" fill="var(--accent-dark)" font-size="13" font-weight="700" font-family="DM Sans">GENE TEST SUITE</text>
+<text x="410" y="174" text-anchor="middle" fill="var(--text-muted)" font-size="10" font-family="DM Sans">(Intelligence Hub)</text>
+
+<rect x="20" y="10" width="180" height="56" rx="12" fill="var(--gold-light)" stroke="#E0CDA0" stroke-width="1.5"/>
+<text x="110" y="34" text-anchor="middle" fill="var(--gold)" font-size="12" font-weight="700" font-family="DM Sans">PPSI Body + SRS</text>
+<text x="110" y="50" text-anchor="middle" fill="var(--text-light)" font-size="9" font-family="DM Sans">High-Revenue Magnet</text>
+
+<rect x="620" y="10" width="180" height="56" rx="12" fill="var(--accent-light)" stroke="#B8D4C8" stroke-width="1.5"/>
+<text x="710" y="34" text-anchor="middle" fill="var(--accent-dark)" font-size="12" font-weight="700" font-family="DM Sans">TAVI</text>
+<text x="710" y="50" text-anchor="middle" fill="var(--text-light)" font-size="9" font-family="DM Sans">Cardio Gene → TAVI</text>
+
+<rect x="20" y="254" width="180" height="56" rx="12" fill="var(--rose-light)" stroke="#E0C8C8" stroke-width="1.5"/>
+<text x="110" y="278" text-anchor="middle" fill="var(--rose)" font-size="12" font-weight="700" font-family="DM Sans">Cancer Advanced</text>
+<text x="110" y="294" text-anchor="middle" fill="var(--text-light)" font-size="9" font-family="DM Sans">Encode → Cancer Tx</text>
+
+<rect x="620" y="254" width="180" height="56" rx="12" fill="var(--purple-light)" stroke="#D0C8E0" stroke-width="1.5"/>
+<text x="710" y="278" text-anchor="middle" fill="var(--purple)" font-size="12" font-weight="700" font-family="DM Sans">EP Study + Ablation</text>
+<text x="710" y="294" text-anchor="middle" fill="var(--text-light)" font-size="9" font-family="DM Sans">Heritage WES → EP</text>
+
+<defs><marker id="a2" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#B5B0A8"/></marker></defs>
+<line x1="310" y1="148" x2="205" y2="52" stroke="#C8C4BC" stroke-width="1.5" marker-end="url(#a2)"/>
+<line x1="510" y1="148" x2="620" y2="52" stroke="#C8C4BC" stroke-width="1.5" marker-end="url(#a2)"/>
+<line x1="310" y1="190" x2="205" y2="268" stroke="#C8C4BC" stroke-width="1.5" marker-end="url(#a2)"/>
+<line x1="510" y1="190" x2="620" y2="268" stroke="#C8C4BC" stroke-width="1.5" marker-end="url(#a2)"/>
+
+<text x="225" y="93" fill="var(--text-light)" font-size="9" font-family="DM Sans" transform="rotate(-28 225 93)">Body Composition Data</text>
+<text x="555" y="93" fill="var(--text-light)" font-size="9" font-family="DM Sans" transform="rotate(28 555 93)">Cardio Gene Risk</text>
+<text x="222" y="240" fill="var(--text-light)" font-size="9" font-family="DM Sans" transform="rotate(28 222 240)">Cancer Gene Risk</text>
+<text x="558" y="240" fill="var(--text-light)" font-size="9" font-family="DM Sans" transform="rotate(-28 558 240)">Neuro/Cardio Heritage</text>
+</svg>
+<p><strong>Gene Test Suite</strong> เป็น Intelligence Hub — ผลตรวจ DNA นำไปสู่ทุก Flagship: พบเสี่ยงหัวใจ → TAVI/EP · พบเสี่ยงมะเร็ง → Cancer Surgery · Body Data → PPSI</p>
+</div>
+</section>
+
+<!-- Compare -->
+<section class="compare-section">
+<div class="stitle"><h2>Book1 vs Book2 — Strategy Comparison</h2><p>ทั้ง 2 กลุ่มทำงานร่วมกันเป็น Full Revenue Funnel</p><div class="line"></div></div>
+<div class="compare-grid">
+<div class="cbox b1bg">
+<span class="ctag">BOOK 1 — Volume & Entry</span>
+<h3>High Volume, Broader Market</h3>
+<ul>
+<li>Wellness Check-up = Entry Point ปริมาณสูง</li>
+<li>Breast Augmentation/Lift = Mass Aesthetic Market</li>
+<li>Cath-PCI = Standard Cardiac Intervention</li>
+<li>Gastroscope/Colonoscope = Screening Volume</li>
+<li>Sleep Disorders/TMS = Emerging Wellness</li>
+</ul>
+<div class="role">บทบาท: สร้าง Volume → Feed Pipeline → Cross-sell ไป Book2</div>
+</div>
+<div class="cbox b2bg">
+<span class="ctag">BOOK 2 — Specialized & Premium</span>
+<h3>High Value, Niche Excellence</h3>
+<ul>
+<li>Body Contour + SRS = Premium Med-Tourism</li>
+<li>Gene Test Suite = Personalized Intelligence Hub</li>
+<li>TAVI = Ultra-Advanced Heart Intervention</li>
+<li>Cancer Conserving Surgery = Clinical Excellence</li>
+<li>EP Study + Ablation = Curative Electrophysiology</li>
+</ul>
+<div class="role">บทบาท: รับ Referral จาก Book1 → แปลงเป็น High-Revenue Cases</div>
+</div>
+</div>
+</section>
+
+<!-- Summary -->
+<section class="summary">
+<div class="summary-card">
+<h2>สรุป: ทำไมเลือก 5 ตัวนี้จาก Book2?</h2>
+<p>
+ทั้ง 5 Flagship ถูกคัดมาจากกลุ่ม Advanced & Specialized — ทุกตัวมี Market CAGR สูง (11–20%+), Revenue per case สูงกว่า Book1 หลายเท่า, มี Clinical Differentiation ที่ชัดเจน และตอบโจทย์ Thailand Medical Hub 2026 ที่รัฐบาลกำลังผลักดัน โดย Gene Test Suite ทำหน้าที่เป็น Intelligence Hub ที่ส่งผู้ป่วยไปยังทุก CoE ได้อย่างแม่นยำ
+</p>
+<div class="stags">
+<span>🏳️‍🌈 PPSI Body+SRS — Global Magnet</span>
+<span>🧬 Gene Test — Intelligence Hub</span>
+<span>❤️ TAVI — Next-Gen Cardiology</span>
+<span>🎯 Cancer — Organ Preserving</span>
+<span>⚡ EP Ablation — Curative Heart</span>
+</div>
+</div>
+</section>
+
+</div>
+</body>
+</html>
